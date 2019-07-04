@@ -118,8 +118,12 @@ txt
 xml
 xz
 ```
+```shell
+find ./user-* -type f \
+   | sed -e 's/^.*\.//g' \
+   | sort | uniq
 ```
-mbohun@linux-bswl:~/src/test_collect_file_types.git> find ./user-* -type f | sed -e 's/^.*\.//g' | sort | uniq
+```
 c
 doc
 docx
