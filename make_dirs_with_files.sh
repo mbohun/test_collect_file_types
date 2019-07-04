@@ -10,11 +10,10 @@ function setup_test_dir_struct {
     for n in `seq 0 10`
     do
         local user_dir_name="user-`printf "%.2d" ${n}`" 
-        mkdir -p user_dir_name
+        mkdir -p ${user_dir_name}
 
         # create index.html file
-        rand_str=$RANDOM
-        echo "rand_str:${rand_str} => ${FILE_TYPES[$((rand_str % FILE_TYPES_LEN))]}"
+        echo "randomly chosen file type: ${FILE_TYPES[$(($RANDOM % FILE_TYPES_LEN))]}"
     done
 }
 
