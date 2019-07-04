@@ -90,3 +90,10 @@ mbohun@linux-bswl:~/src/test_collect_file_types.git> cat ./user-10/index.html
     </body>
 </html>
 ```
+#### usage:
+```
+find ./ -name "index.html" | xargs grep '<a href="' | sed -e 's/^.*<a href="//g' -e 's/".*$//g' -e 's/^.*\.//g' | sort | uniq
+```
+```
+find ./user-* -type f | sed -e 's/^.*\.//g' | sort | uniq
+```
