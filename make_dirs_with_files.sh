@@ -2,7 +2,7 @@
 
 FILE_TYPES=('bmp' 'c' 'doc' 'docx' 'jpg' 'jpeg' 'gif' 'md' 'odt' 'pdf' 'png' 'pnm' 'py' 'rtf' 'svg' 'tar' 'tiff' 'txt' 'xml' 'xz')
 FILE_TYPES_LEN=${#FILE_TYPES[*]}
-echo "FILE_TYPES_LEN: $FILE_TYPES_LEN"
+#echo "FILE_TYPES_LEN: $FILE_TYPES_LEN"
 
 function setup_test_dir_struct {
 
@@ -19,3 +19,6 @@ function setup_test_dir_struct {
 }
 
 #rm -rf ./user-*
+
+setup_test_dir_struct;
+
