@@ -92,6 +92,23 @@ mbohun@linux-bswl:~/src/test_collect_file_types.git> cat ./user-10/index.html
 ```
 ## usage:
 ```BASH
+grep '<a href="' ./user-10/index.html \
+   | sed -e 's/^.*<a href="//g' -e 's/".*$//g' -e 's/^.*\.//g' \
+   | sort | uniq
+```
+```
+xz
+```
+```BASH
+find ./user-10 -type f \
+   | sed -e 's/^.*\.//g' \
+   | sort | uniq
+```
+```
+html
+xz
+```
+```BASH
 find ./ -name "index.html" \
    | xargs grep '<a href="' \
    | sed -e 's/^.*<a href="//g' -e 's/".*$//g' -e 's/^.*\.//g' \
