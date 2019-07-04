@@ -118,7 +118,7 @@ txt
 xml
 xz
 ```
-```sh
+```bash
 find ./user-* -type f \
    | sed -e 's/^.*\.//g' \
    | sort | uniq
