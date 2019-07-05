@@ -1,37 +1,30 @@
 #!/usr/bin/env groovy
 import java.io.File
 
-def final dirToSearch = this.args.length < 1 ? '.' : this.args[0]
+def extractFileTypesStats(file, stats) {
+    System.out.println("PROCESSING: $file");
 
-def extractFileTypesStats() {
-
-try {
-
-    def final dirToSearchFile = new File(dirToSearch)
-    if (!dirToSearchFile.isDirectory()) {
-        System.err.println("ERROR: This ain't no Jim Beam!")
+    try {
+        def final startFile = new File(file)
+        if (startFile.isDirectory()) {
+            startFile.list().each {
+                extractFileTypesStats(it, stats)
+            }
+        } else {
+            def final ext = file.substring(file.lastIndexOf('.') + 1)
+            stats[ext] = stats.containsKey(ext) ? stats[ext] + 1 : 1
+        }
+    } catch (Exception e) {
+        System.err.println("ERROR: ${e}")
         System.exit(-1)
     }
-
-    System.out.println("SEARCHING DIR: ${dirToSearch}")
-    //dirToSearchFile.list()
-    //dirToSearchFile.list().findAll{ it[0] == 'u' }.sort().each(System.out.&println)
-
-    def final stats = [:]
-
-    dirToSearchFile.list().each {
-        def final ext = it.substring(it.lastIndexOf('.') + 1)
-        stats[ext] = stats.containsKey(ext) ? stats[ext] + 1 : 1
-    }
-
-    stats.each { key, value ->
-        println "$value $key"
-    }
-
-} catch (Exception e) {
-    System.err.println("ERROR: ${e}")
-    System.exit(-1)
 }
 
-}
+def final stats = [:]
+def final start = this.args.length < 1 ? '.' : this.args[0]
 
+extractFileTypesStats(start, stats)
+
+stats.each { key, value ->
+    println "$value $key"
+}
