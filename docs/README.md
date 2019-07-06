@@ -162,3 +162,47 @@ txt
 xml
 xz
 ```
+```BASH
+./extract_file_types_stats.sh './user-00'
+```
+```
+2 xml
+1 tar
+1 py
+1 odt
+1 jpg
+1 html
+1 doc
+```
+```BASH
+./extract_file_types_stats.sh './user-10'
+```
+```
+2 xz
+1 html
+```
+```BASH
+./extract_file_types_stats.sh './user-*'
+```
+```
+11 html
+ 7 c
+ 6 jpeg
+ 6 doc
+ 5 jpg
+ 4 xz
+ 4 rtf
+ 4 py
+ 3 pnm
+ 3 png
+ 2 xml
+ 2 txt
+ 2 tar
+ 2 svg
+ 2 odt
+ 2 md
+ 2 docx
+ 1 tiff
+ 1 pdf
+ 1 gif
+ ```
